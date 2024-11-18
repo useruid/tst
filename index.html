@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cat Image Gallery</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+        }
+        h1 {
+            color: #333;
+        }
+        .gallery {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+            padding: 20px;
+        }
+        img {
+            width: 200px;
+            border-radius: 10px;
+            border: 2px solid #ccc;
+        }
+        a {
+            text-decoration: none;
+            color: #007BFF;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <h1>Cat Gallery with Unique Links</h1>
+    <div class="gallery" id="gallery"></div>
+
+    <script>
+        // List of cat images (you can add or remove images here)
+        const catImages = [
+            '1.jpg',
+            '2.jpeg',
+            // Add more filenames here
+        ];
+
+        // Base URL for GitHub Pages (update with your username/repo)
+        const baseUrl = 'https://useruid.github.io/tst/images/';
+
+        // Get gallery container
+        const gallery = document.getElementById('gallery');
+
+        // Generate gallery and links
+        catImages.forEach(filename => {
+            // Create container for each image
+            const div = document.createElement('div');
+
+            // Create image element
+            const img = document.createElement('img');
+            img.src = `${baseUrl}${filename}`;
+            img.alt = filename;
+            
+            // Create link element
+            const link = document.createElement('a');
+            link.href = `${baseUrl}${filename}`;
+            link.textContent = `View ${filename}`;
+            link.target = '_blank';
+
+            // Add image and link to container
+            div.appendChild(img);
+            div.appendChild(document.createElement('br')); // Line break
+            div.appendChild(link);
+
+            // Append container to gallery
+            gallery.appendChild(div);
+        });
+    </script>
+</body>
+</html>
